@@ -26,6 +26,14 @@ app.use('/', function(req, res) {
     res.render("index.jade", {layout:false});
 });
 
+app.use('/account/authenticated', function(req, res) {
+    if(req.session.loggedIn) {
+        res.send(200);
+    } else {
+        res.send(401);
+    }
+});
+
 app.listen(8080);
 
 // catch 404 and forward to error handler
